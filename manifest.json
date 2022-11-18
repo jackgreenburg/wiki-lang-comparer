@@ -1,0 +1,16 @@
+{
+  "name": "Top Language Finder",
+  "description": "Identify the language of a Wikipedia article that has the most information.",
+  "version": "0.1",
+  "manifest_version": 3,
+  "host_permissions": [
+    "https://*.wikipedia.org/*"
+  ],
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "index.html"
+  }
+}

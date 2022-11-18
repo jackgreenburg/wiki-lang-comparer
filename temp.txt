@@ -1,0 +1,5 @@
+https://developer.chrome.com/docs/extensions/mv3/getstarted/
+https://github.com/GoogleChrome/chrome-extensions-samples
+
+https://stackoverflow.com/questions/4143713/retrieve-another-language-of-a-wikipedia-page
+https://en.wikipedia.org/wiki/Special%3aApiSandbox#action=query&format=json&prop=langlinks&titles=Colugo&lllang=ru&lllimit=100
