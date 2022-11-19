@@ -47,7 +47,16 @@ async function processPages(langlinks) {
   return user_list;
 }
 
-async function hitWiki(lang_code, title) {
+/**
+ * Takes a language and a title of an article.
+ * Returns a list of lists containting the other languages and titles of the
+ * other versions of the article.
+ *
+ * @param {string} lang_code    Description.
+ * @param {string} title        Description of optional variable.
+ * @return {list[list[string, string]]}   List of langs and titles
+ */
+async function fetchLanguages(lang_code, title) {
   // set url with language
   let url = "https://" + lang_code + ".wikipedia.org/w/api.php";
 
@@ -67,23 +76,16 @@ async function hitWiki(lang_code, title) {
 
   console.log("prepped first url:\n-->" + url);
 
-  fetch(url)
+  return await fetch(url)
     // fetch("data.json")
     .then((response) => response.json())
     .then((data) => data.query.pages)
     .then((pages) => pages[Object.keys(pages)[0]])
-    // .then((page) => page.langlinks)
     .then((page) => {
-      console.log(page.title);
+      console.log("fetched alt langs for: " + page.title);
 
       // const lang_size_list = await processPages(page.langlinks);
-
-      page.langlinks.forEach((x) =>
-        console.log(getSizeVerbose(x.lang, x["*"])),
-      );
-      // console.log();
-      // document.getElementById("basic").innerHTML = lang_size_list;
-      // console.log(lang_size_list);
+      return page.langlinks.map((x) => [x.lang, x["*"]]);
     });
 }
 
@@ -108,28 +110,15 @@ async function execute() {
   console.log("execute func--", lang, title);
   document.getElementById("basic").innerHTML = lang + " " + title;
 
-  const urls = await getLangs(lang, title);
+  const lang_title_list = await fetchLanguages(lang, title);
+  console.log(lang_title_list);
+  return true;
 }
 
 document.getElementById("trigger").addEventListener("click", function () {
-  const tab = execute();
+  execute();
   // document.getElementById("basic").innerHTML = tab;
 
-  // hitWiki("en", "Lego_World_Racers");
-  // fetch(
-  //   "https://en.wikipedia.org/w/api.php?&action=query&prop=revisions&format=json&rvprop=timestamp%7Csize&titles=Lego World Racers",
-  // )
-  //   .then((response) => response.json())
-  //   .then((data) => data.query.pages)
-  //   .then((data) => {
-  //     console.log(data);
-  //   });,
-  // fetch(
-  //   "https://da.wikipedia.org/w/api.php?&action=query&prop=revisions&format=json&rvprop=timestamp%7Csize&titles=Lego World Racers",
-  // )
-  //   .then((response) => response.json())
-  //   .then((data) => data.query.pages)
-  //   .then((data) => {
-  //     console.log(data);
-  //   });
+  // fetchLanguages("en", "Lego_World_Racers");
+  // fetchLanguages("da", "Lego_World_Racers");
 });
