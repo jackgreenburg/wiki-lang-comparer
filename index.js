@@ -1,4 +1,6 @@
-function getSizeVerbose(lang_code, title) {
+// TODO: make this work with size or langlinks
+function constructURL(lang_code, title) {
+  // if prop === revisions... elif prop===langlinks
   let url = "https://" + lang_code + ".wikipedia.org/w/api.php";
 
   let params = {
@@ -14,37 +16,34 @@ function getSizeVerbose(lang_code, title) {
     url += "&" + key + "=" + params[key];
   });
 
-  console.log(title + " in " + lang_code + ":\n-->" + url);
-
-  let a = fetch(url)
-    // fetch("data2.json")
-    .then((response) => response.json())
-    .then((data) => data.query.pages)
-    .then((pages) => pages[Object.keys(pages)[0]].revisions)
-    .then((revision) => {
-      // assert revision.length == 1...
-      console.log(lang_code + revision[0].size);
-      return lang_code + revision[0].size;
-    })
-    .then((a) => console.log("????", a));
-  console.log("here:");
-  console.log("><><" + a);
-  return a;
+  return url;
 }
 
-async function processPages(langlinks) {
-  let result;
-  let promises = [];
+async function fetchSize(lang_code, title) {
+  const url = constructURL(lang_code, title);
 
-  // langlinks.forEach((x) => promises.push(getSizeVerbose([x.lang, x["*"]])));
+  const response = await fetch(url);
+  const data = await response.json();
 
-  // result = await Promise.all(promises);
-  // console.log(result);
-  for (let i = 0; i < user_list.length; i++) {
-    user_list[i]["result"] = result[i];
-  }
-  // return result;
-  return user_list;
+  const pages = data.query.pages;
+  const pageID = Object.keys(pages)[0];
+  const page_info = pages[pageID];
+
+  // perhaps assert length revisions == 0
+  return {
+    lang: lang_code,
+    size: page_info.revisions[0].size,
+    title: page_info.title,
+  };
+}
+
+async function processSizeFetching(lang_title_list) {
+  const articles = await Promise.all(
+    lang_title_list.map((lang_title) => fetchSize(...lang_title)),
+  );
+
+  articles.sort((a, b) => (a.size < b.size ? 1 : -1));
+  return articles;
 }
 
 /**
@@ -54,7 +53,7 @@ async function processPages(langlinks) {
  *
  * @param {string} lang_code    Description.
  * @param {string} title        Description of optional variable.
- * @return {list[list[string, string]]}   List of langs and titles
+ * @return {Array[Array[string, string]]}   List of langs and titles
  */
 async function fetchLanguages(lang_code, title) {
   // set url with language
@@ -76,19 +75,24 @@ async function fetchLanguages(lang_code, title) {
 
   console.log("prepped first url:\n-->" + url);
 
-  return await fetch(url)
-    // fetch("data.json")
-    .then((response) => response.json())
-    .then((data) => data.query.pages)
-    .then((pages) => pages[Object.keys(pages)[0]])
-    .then((page) => {
-      console.log("fetched alt langs for: " + page.title);
+  const response = await fetch(url);
+  const data = await response.json();
 
-      // const lang_size_list = await processPages(page.langlinks);
-      return page.langlinks.map((x) => [x.lang, x["*"]]);
-    });
+  const pages = data.query.pages;
+  const pageID = Object.keys(pages)[0];
+  const page_info = pages[pageID];
+
+  console.log("fetched alt langs for: " + page_info.title);
+
+  return page_info.langlinks.map((x) => [x.lang, x["*"]]);
 }
 
+/**
+ * Returns a list containting the language and the title of the active tab.
+ * If the active tab is not a Wikipedia article it does something else..
+ *
+ * @return {[Array[string, string]]}   List of lang and title
+ */
 async function getCurrentTab() {
   let queryOptions = { active: true, lastFocusedWindow: true };
 
@@ -107,11 +111,18 @@ async function getCurrentTab() {
 
 async function execute() {
   const [lang, title] = await getCurrentTab();
-  console.log("execute func--", lang, title);
-  document.getElementById("basic").innerHTML = lang + " " + title;
+  document.getElementById("basic").innerHTML =
+    "current:\n" + lang + " " + title;
 
   const lang_title_list = await fetchLanguages(lang, title);
-  console.log(lang_title_list);
+  lang_title_list.push([lang, title]); // add active article
+  const sizes = await processSizeFetching(lang_title_list);
+  console.log(sizes);
+
+  document.getElementById("basic").innerHTML = sizes
+    .map((size) => size.lang + "/" + size.title + ": " + size.size)
+    .join("\n");
+
   return true;
 }
 
