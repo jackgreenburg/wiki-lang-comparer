@@ -109,6 +109,35 @@ async function getCurrentTab() {
   return [found[1], found[2]];
 }
 
+const items1 = [
+  { date: "10/17/2018", name: "john doe" },
+  { date: "10/18/2018", name: "jane doe" },
+];
+const items2 = [
+  { date: "10/17/2019", name: "john doe" },
+  { date: "10/18/2019", name: "jane doe" },
+];
+
+function xfunc() {
+  var url = "http://stackoverflow.com/";
+  chrome.tabs.create({ url, active: false });
+}
+function populateTable(arr) {
+  const table = document.getElementById("testBody");
+  arr.forEach((size_dict) => {
+    let row = table.insertRow();
+    let date = row.insertCell(0);
+    date.innerHTML = size_dict.lang;
+    let title = row.insertCell(1);
+    title.innerHTML = size_dict.title;
+    let size = row.insertCell(2);
+    size.innerHTML = size_dict.size;
+    row.onclick = xfunc;
+    // let button = row.insertCell(0);
+    // button.innerHTML = ;
+  });
+}
+
 async function execute() {
   const [lang, title] = await getCurrentTab();
   document.getElementById("basic").innerHTML =
@@ -118,18 +147,15 @@ async function execute() {
   lang_title_list.push([lang, title]); // add active article
   const sizes = await processSizeFetching(lang_title_list);
   console.log(sizes);
-
-  document.getElementById("basic").innerHTML = sizes
-    .map((size) => size.lang + "/" + size.title + ": " + size.size)
-    .join("\n");
+  // console.log(sizes);
+  populateTable(sizes);
+  // document.getElementById("basic").innerHTML = sizes
+  //   .map((size) => size.lang + "/" + size.title + ": " + size.size)
+  //   .join("\n");
 
   return true;
 }
 
 document.getElementById("trigger").addEventListener("click", function () {
   execute();
-  // document.getElementById("basic").innerHTML = tab;
-
-  // fetchLanguages("en", "Lego_World_Racers");
-  // fetchLanguages("da", "Lego_World_Racers");
 });
