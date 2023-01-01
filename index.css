@@ -16,8 +16,37 @@ div.center {
 
 body.main {
   height: 150px;
-  width: 150px;
+  width: 250px;
   justify-content: end;
+}
+
+div.row-container {
+  display: flex;
+  flex-direction: column;
+}
+
+div.row-field {
+  flex: 1;
+  display: flex;
+  padding: 0.5em;
+  cursor: pointer;
+  flex-direction: row;
+}
+
+div.row-graph {
+  flex: 2;
+}
+
+div.bar {
+  flex: 1;
+  height: 100%;
+  background: black;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+div.row-lang {
+  flex: 3;
 }
 
 h1 {

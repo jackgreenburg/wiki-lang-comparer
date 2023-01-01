@@ -23,6 +23,7 @@ async function fetchSize(lang_code, title) {
   const url = constructURL(lang_code, title);
 
   const response = await fetch(url);
+  // const response = await fetch("fetch2_response.json");
   const data = await response.json();
 
   const pages = data.query.pages;
@@ -76,6 +77,8 @@ async function fetchLanguages(lang_code, title) {
   console.log("prepped first url:\n-->" + url);
 
   const response = await fetch(url);
+  // const response = await fetch("fetch1_response.json");
+
   const data = await response.json();
 
   const pages = data.query.pages;
@@ -109,33 +112,50 @@ async function getCurrentTab() {
   return [found[1], found[2]];
 }
 
-const items1 = [
-  { date: "10/17/2018", name: "john doe" },
-  { date: "10/18/2018", name: "jane doe" },
-];
-const items2 = [
-  { date: "10/17/2019", name: "john doe" },
-  { date: "10/18/2019", name: "jane doe" },
-];
+function onClickAction(code, title) {
+  const url = "https://" + code + ".wikipedia.org/wiki/" + title;
+  console.log("Opening... " + url);
 
-function xfunc() {
-  var url = "http://stackoverflow.com/";
   chrome.tabs.create({ url, active: false });
 }
-function populateTable(arr) {
-  const table = document.getElementById("testBody");
-  arr.forEach((size_dict) => {
-    let row = table.insertRow();
-    let date = row.insertCell(0);
-    date.innerHTML = size_dict.lang;
-    let title = row.insertCell(1);
-    title.innerHTML = size_dict.title;
-    let size = row.insertCell(2);
-    size.innerHTML = size_dict.size;
-    row.onclick = xfunc;
-    // let button = row.insertCell(0);
-    // button.innerHTML = ;
-  });
+
+function createLang(title) {
+  var div = document.createElement("div");
+  div.className = "row-lang";
+  div.innerHTML = title;
+  return div;
+}
+
+function createGraph(size, max) {
+  var div = document.createElement("div");
+  div.className = "row-graph";
+
+  var barDiv = document.createElement("div");
+  barDiv.className = "bar";
+  barDiv.style.width = (size / max) * 100 + "%";
+  div.appendChild(barDiv);
+  return div;
+}
+
+async function populateTable(infoDictArr) {
+  const data = await fetch("wiki_langs.json");
+  const wikiLangs = await data.json();
+
+  const rows = document.getElementById("rows");
+  rows.innerHTML = "";
+
+  const { size: maxSize } = infoDictArr[0];
+  for (const [index, infoDict] of infoDictArr.entries()) {
+    const { lang, title, size } = infoDict;
+    var rowDiv = document.createElement("div");
+    rowDiv.id = lang + "." + title;
+    rowDiv.className = "row-field";
+    rowDiv.appendChild(createGraph(size, maxSize));
+    rowDiv.appendChild(createLang(wikiLangs[lang].lang_engl));
+    rowDiv.addEventListener("click", onClickAction.bind(null, lang, title));
+
+    rows.appendChild(rowDiv);
+  }
 }
 
 async function execute() {

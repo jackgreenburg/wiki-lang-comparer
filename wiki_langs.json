@@ -1,0 +1,1318 @@
+{
+  "en": {
+    "lang": "English",
+    "lang_engl": "English"
+  },
+  "ceb": {
+    "lang": "Cebuano",
+    "lang_engl": "Cebuano"
+  },
+  "de": {
+    "lang": "Deutsch",
+    "lang_engl": "German"
+  },
+  "sv": {
+    "lang": "svenska",
+    "lang_engl": "Swedish"
+  },
+  "fr": {
+    "lang": "fran\u00e7ais",
+    "lang_engl": "French"
+  },
+  "nl": {
+    "lang": "Nederlands",
+    "lang_engl": "Dutch"
+  },
+  "ru": {
+    "lang": "\u0440\u0443\u0441\u0441\u043a\u0438\u0439",
+    "lang_engl": "Russian"
+  },
+  "es": {
+    "lang": "espa\u00f1ol",
+    "lang_engl": "Spanish"
+  },
+  "it": {
+    "lang": "italiano",
+    "lang_engl": "Italian"
+  },
+  "arz": {
+    "lang": "\u0645\u0635\u0631\u0649",
+    "lang_engl": "Egyptian Arabic"
+  },
+  "pl": {
+    "lang": "polski",
+    "lang_engl": "Polish"
+  },
+  "ja": {
+    "lang": "\u65e5\u672c\u8a9e",
+    "lang_engl": "Japanese"
+  },
+  "zh": {
+    "lang": "\u4e2d\u6587",
+    "lang_engl": "Chinese"
+  },
+  "vi": {
+    "lang": "Ti\u1ebfng Vi\u1ec7t",
+    "lang_engl": "Vietnamese"
+  },
+  "war": {
+    "lang": "Winaray",
+    "lang_engl": "Waray"
+  },
+  "uk": {
+    "lang": "\u0443\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430",
+    "lang_engl": "Ukrainian"
+  },
+  "ar": {
+    "lang": "\u0627\u0644\u0639\u0631\u0628\u064a\u0629",
+    "lang_engl": "Arabic"
+  },
+  "pt": {
+    "lang": "portugu\u00eas",
+    "lang_engl": "Portuguese"
+  },
+  "fa": {
+    "lang": "\u0641\u0627\u0631\u0633\u06cc",
+    "lang_engl": "Persian"
+  },
+  "ca": {
+    "lang": "catal\u00e0",
+    "lang_engl": "Catalan"
+  },
+  "sr": {
+    "lang": "\u0441\u0440\u043f\u0441\u043a\u0438 / srpski",
+    "lang_engl": "Serbian"
+  },
+  "id": {
+    "lang": "Bahasa Indonesia",
+    "lang_engl": "Indonesian"
+  },
+  "ko": {
+    "lang": "\ud55c\uad6d\uc5b4",
+    "lang_engl": "Korean"
+  },
+  "no": {
+    "lang": "norsk",
+    "lang_engl": "Norwegian (Bokm\u00e5l)"
+  },
+  "fi": {
+    "lang": "suomi",
+    "lang_engl": "Finnish"
+  },
+  "tr": {
+    "lang": "T\u00fcrk\u00e7e",
+    "lang_engl": "Turkish"
+  },
+  "hu": {
+    "lang": "magyar",
+    "lang_engl": "Hungarian"
+  },
+  "ce": {
+    "lang": "\u043d\u043e\u0445\u0447\u0438\u0439\u043d",
+    "lang_engl": "Chechen"
+  },
+  "cs": {
+    "lang": "\u010de\u0161tina",
+    "lang_engl": "Czech"
+  },
+  "tt": {
+    "lang": "\u0442\u0430\u0442\u0430\u0440\u0447\u0430/tatar\u00e7a",
+    "lang_engl": "Tatar"
+  },
+  "sh": {
+    "lang": "srpskohrvatski / \u0441\u0440\u043f\u0441\u043a\u043e\u0445\u0440\u0432\u0430\u0442\u0441\u043a\u0438",
+    "lang_engl": "Serbo-Croatian"
+  },
+  "ro": {
+    "lang": "rom\u00e2n\u0103",
+    "lang_engl": "Romanian"
+  },
+  "zh-min-nan": {
+    "lang": "B\u00e2n-l\u00e2m-g\u00fa",
+    "lang_engl": "Southern Min"
+  },
+  "eu": {
+    "lang": "euskara",
+    "lang_engl": "Basque"
+  },
+  "ms": {
+    "lang": "Bahasa Melayu",
+    "lang_engl": "Malay"
+  },
+  "eo": {
+    "lang": "Esperanto",
+    "lang_engl": "Esperanto"
+  },
+  "he": {
+    "lang": "\u05e2\u05d1\u05e8\u05d9\u05ea",
+    "lang_engl": "Hebrew"
+  },
+  "hy": {
+    "lang": "\u0570\u0561\u0575\u0565\u0580\u0565\u0576",
+    "lang_engl": "Armenian"
+  },
+  "da": {
+    "lang": "dansk",
+    "lang_engl": "Danish"
+  },
+  "bg": {
+    "lang": "\u0431\u044a\u043b\u0433\u0430\u0440\u0441\u043a\u0438",
+    "lang_engl": "Bulgarian"
+  },
+  "cy": {
+    "lang": "Cymraeg",
+    "lang_engl": "Welsh"
+  },
+  "sk": {
+    "lang": "sloven\u010dina",
+    "lang_engl": "Slovak"
+  },
+  "azb": {
+    "lang": "\u062a\u06c6\u0631\u06a9\u062c\u0647",
+    "lang_engl": "South Azerbaijani"
+  },
+  "et": {
+    "lang": "eesti",
+    "lang_engl": "Estonian"
+  },
+  "kk": {
+    "lang": "\u049b\u0430\u0437\u0430\u049b\u0448\u0430",
+    "lang_engl": "Kazakh"
+  },
+  "be": {
+    "lang": "\u0431\u0435\u043b\u0430\u0440\u0443\u0441\u043a\u0430\u044f",
+    "lang_engl": "Belarusian"
+  },
+  "min": {
+    "lang": "Minangkabau",
+    "lang_engl": "Minangkabau"
+  },
+  "simple": {
+    "lang": "Simple English",
+    "lang_engl": "Simple English"
+  },
+  "uz": {
+    "lang": "o\u02bbzbekcha/\u045e\u0437\u0431\u0435\u043a\u0447\u0430",
+    "lang_engl": "Uzbek"
+  },
+  "el": {
+    "lang": "\u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac",
+    "lang_engl": "Greek"
+  },
+  "hr": {
+    "lang": "hrvatski",
+    "lang_engl": "Croatian"
+  },
+  "lt": {
+    "lang": "lietuvi\u0173",
+    "lang_engl": "Lithuanian"
+  },
+  "gl": {
+    "lang": "galego",
+    "lang_engl": "Galician"
+  },
+  "az": {
+    "lang": "az\u0259rbaycanca",
+    "lang_engl": "Azerbaijani"
+  },
+  "ur": {
+    "lang": "\u0627\u0631\u062f\u0648",
+    "lang_engl": "Urdu"
+  },
+  "sl": {
+    "lang": "sloven\u0161\u010dina",
+    "lang_engl": "Slovene"
+  },
+  "ka": {
+    "lang": "\u10e5\u10d0\u10e0\u10d7\u10e3\u10da\u10d8",
+    "lang_engl": "Georgian"
+  },
+  "nn": {
+    "lang": "norsk nynorsk",
+    "lang_engl": "Norwegian (Nynorsk)"
+  },
+  "hi": {
+    "lang": "\u0939\u093f\u0928\u094d\u0926\u0940",
+    "lang_engl": "Hindi"
+  },
+  "th": {
+    "lang": "\u0e44\u0e17\u0e22",
+    "lang_engl": "Thai"
+  },
+  "ta": {
+    "lang": "\u0ba4\u0bae\u0bbf\u0bb4\u0bcd",
+    "lang_engl": "Tamil"
+  },
+  "la": {
+    "lang": "Latina",
+    "lang_engl": "Latin"
+  },
+  "mk": {
+    "lang": "\u043c\u0430\u043a\u0435\u0434\u043e\u043d\u0441\u043a\u0438",
+    "lang_engl": "Macedonian"
+  },
+  "bn": {
+    "lang": "\u09ac\u09be\u0982\u09b2\u09be",
+    "lang_engl": "Bengali"
+  },
+  "ast": {
+    "lang": "asturianu",
+    "lang_engl": "Asturian"
+  },
+  "zh-yue": {
+    "lang": "\u7cb5\u8a9e",
+    "lang_engl": "Cantonese"
+  },
+  "lv": {
+    "lang": "latvie\u0161u",
+    "lang_engl": "Latvian"
+  },
+  "tg": {
+    "lang": "\u0442\u043e\u04b7\u0438\u043a\u04e3",
+    "lang_engl": "Tajik"
+  },
+  "af": {
+    "lang": "Afrikaans",
+    "lang_engl": "Afrikaans"
+  },
+  "my": {
+    "lang": "\u1019\u103c\u1014\u103a\u1019\u102c\u1018\u102c\u101e\u102c",
+    "lang_engl": "Burmese"
+  },
+  "mg": {
+    "lang": "Malagasy",
+    "lang_engl": "Malagasy"
+  },
+  "bs": {
+    "lang": "bosanski",
+    "lang_engl": "Bosnian"
+  },
+  "mr": {
+    "lang": "\u092e\u0930\u093e\u0920\u0940",
+    "lang_engl": "Marathi"
+  },
+  "oc": {
+    "lang": "occitan",
+    "lang_engl": "Occitan"
+  },
+  "sq": {
+    "lang": "shqip",
+    "lang_engl": "Albanian"
+  },
+  "nds": {
+    "lang": "Plattd\u00fc\u00fctsch",
+    "lang_engl": "Low German"
+  },
+  "ky": {
+    "lang": "\u043a\u044b\u0440\u0433\u044b\u0437\u0447\u0430",
+    "lang_engl": "Kyrgyz"
+  },
+  "be-tarask": {
+    "lang": "\u0431\u0435\u043b\u0430\u0440\u0443\u0441\u043a\u0430\u044f (\u0442\u0430\u0440\u0430\u0448\u043a\u0435\u0432\u0456\u0446\u0430)",
+    "lang_engl": "Belarusian (Tara\u0161kievica)"
+  },
+  "ml": {
+    "lang": "\u0d2e\u0d32\u0d2f\u0d3e\u0d33\u0d02",
+    "lang_engl": "Malayalam"
+  },
+  "te": {
+    "lang": "\u0c24\u0c46\u0c32\u0c41\u0c17\u0c41",
+    "lang_engl": "Telugu"
+  },
+  "br": {
+    "lang": "brezhoneg",
+    "lang_engl": "Breton"
+  },
+  "sw": {
+    "lang": "Kiswahili",
+    "lang_engl": "Swahili"
+  },
+  "new": {
+    "lang": "\u0928\u0947\u092a\u093e\u0932 \u092d\u093e\u0937\u093e",
+    "lang_engl": "Newar"
+  },
+  "jv": {
+    "lang": "Jawa",
+    "lang_engl": "Javanese"
+  },
+  "lld": {
+    "lang": "Ladin",
+    "lang_engl": "Ladin"
+  },
+  "vec": {
+    "lang": "v\u00e8neto",
+    "lang_engl": "Venetian"
+  },
+  "ht": {
+    "lang": "Krey\u00f2l ayisyen",
+    "lang_engl": "Haitian Creole"
+  },
+  "pnb": {
+    "lang": "\u067e\u0646\u062c\u0627\u0628\u06cc",
+    "lang_engl": "Western Punjabi"
+  },
+  "pms": {
+    "lang": "Piemont\u00e8is",
+    "lang_engl": "Piedmontese"
+  },
+  "su": {
+    "lang": "Sunda",
+    "lang_engl": "Sundanese"
+  },
+  "lb": {
+    "lang": "L\u00ebtzebuergesch",
+    "lang_engl": "Luxembourgish"
+  },
+  "ba": {
+    "lang": "\u0431\u0430\u0448\u04a1\u043e\u0440\u0442\u0441\u0430",
+    "lang_engl": "Bashkir"
+  },
+  "ku": {
+    "lang": "kurd\u00ee",
+    "lang_engl": "Kurdish (Kurmanji)"
+  },
+  "ga": {
+    "lang": "Gaeilge",
+    "lang_engl": "Irish"
+  },
+  "lmo": {
+    "lang": "lombard",
+    "lang_engl": "Lombard"
+  },
+  "szl": {
+    "lang": "\u015bl\u016fnski",
+    "lang_engl": "Silesian"
+  },
+  "is": {
+    "lang": "\u00edslenska",
+    "lang_engl": "Icelandic"
+  },
+  "cv": {
+    "lang": "\u0447\u04d1\u0432\u0430\u0448\u043b\u0430",
+    "lang_engl": "Chuvash"
+  },
+  "fy": {
+    "lang": "Frysk",
+    "lang_engl": "West Frisian"
+  },
+  "ckb": {
+    "lang": "\u06a9\u0648\u0631\u062f\u06cc",
+    "lang_engl": "Kurdish (Sorani)"
+  },
+  "tl": {
+    "lang": "Tagalog",
+    "lang_engl": "Tagalog"
+  },
+  "an": {
+    "lang": "aragon\u00e9s",
+    "lang_engl": "Aragonese"
+  },
+  "wuu": {
+    "lang": "\u5434\u8bed",
+    "lang_engl": "Wu Chinese"
+  },
+  "diq": {
+    "lang": "Zazaki",
+    "lang_engl": "Zaza"
+  },
+  "sco": {
+    "lang": "Scots",
+    "lang_engl": "Scots"
+  },
+  "pa": {
+    "lang": "\u0a2a\u0a70\u0a1c\u0a3e\u0a2c\u0a40",
+    "lang_engl": "Punjabi"
+  },
+  "io": {
+    "lang": "Ido",
+    "lang_engl": "Ido"
+  },
+  "vo": {
+    "lang": "Volap\u00fck",
+    "lang_engl": "Volap\u00fck"
+  },
+  "yo": {
+    "lang": "Yor\u00f9b\u00e1",
+    "lang_engl": "Yoruba"
+  },
+  "ne": {
+    "lang": "\u0928\u0947\u092a\u093e\u0932\u0940",
+    "lang_engl": "Nepali"
+  },
+  "gu": {
+    "lang": "\u0a97\u0ac1\u0a9c\u0ab0\u0abe\u0aa4\u0ac0",
+    "lang_engl": "Gujarati"
+  },
+  "als": {
+    "lang": "Alemannisch",
+    "lang_engl": "Alemannic German"
+  },
+  "kn": {
+    "lang": "\u0c95\u0ca8\u0ccd\u0ca8\u0ca1",
+    "lang_engl": "Kannada"
+  },
+  "ia": {
+    "lang": "interlingua",
+    "lang_engl": "Interlingua"
+  },
+  "bar": {
+    "lang": "Boarisch",
+    "lang_engl": "Bavarian"
+  },
+  "scn": {
+    "lang": "sicilianu",
+    "lang_engl": "Sicilian"
+  },
+  "avk": {
+    "lang": "Kotava",
+    "lang_engl": "Kotava"
+  },
+  "bpy": {
+    "lang": "\u09ac\u09bf\u09b7\u09cd\u09a3\u09c1\u09aa\u09cd\u09b0\u09bf\u09af\u09bc\u09be \u09ae\u09a3\u09bf\u09aa\u09c1\u09b0\u09c0",
+    "lang_engl": "Bishnupriya Manipuri"
+  },
+  "qu": {
+    "lang": "Runa Simi",
+    "lang_engl": "Quechua (Southern Quechua)"
+  },
+  "crh": {
+    "lang": "q\u0131r\u0131mtatarca",
+    "lang_engl": "Crimean Tatar"
+  },
+  "mn": {
+    "lang": "\u043c\u043e\u043d\u0433\u043e\u043b",
+    "lang_engl": "Mongolian"
+  },
+  "nv": {
+    "lang": "Din\u00e9 bizaad",
+    "lang_engl": "Navajo"
+  },
+  "ha": {
+    "lang": "Hausa",
+    "lang_engl": "Hausa"
+  },
+  "xmf": {
+    "lang": "\u10db\u10d0\u10e0\u10d2\u10d0\u10da\u10e3\u10e0\u10d8",
+    "lang_engl": "Mingrelian"
+  },
+  "si": {
+    "lang": "\u0dc3\u0dd2\u0d82\u0dc4\u0dbd",
+    "lang_engl": "Sinhala"
+  },
+  "ban": {
+    "lang": "Basa Bali",
+    "lang_engl": "Balinese"
+  },
+  "bat-smg": {
+    "lang": "\u017eemait\u0117\u0161ka",
+    "lang_engl": "Samogitian"
+  },
+  "ps": {
+    "lang": "\u067e\u069a\u062a\u0648",
+    "lang_engl": "Pashto"
+  },
+  "os": {
+    "lang": "\u0438\u0440\u043e\u043d",
+    "lang_engl": "Ossetian"
+  },
+  "frr": {
+    "lang": "Nordfriisk",
+    "lang_engl": "North Frisian"
+  },
+  "or": {
+    "lang": "\u0b13\u0b21\u0b3c\u0b3f\u0b06",
+    "lang_engl": "Odia"
+  },
+  "sah": {
+    "lang": "\u0441\u0430\u0445\u0430 \u0442\u044b\u043b\u0430",
+    "lang_engl": "Yakut"
+  },
+  "gd": {
+    "lang": "G\u00e0idhlig",
+    "lang_engl": "Scottish Gaelic"
+  },
+  "bug": {
+    "lang": "\u1a05\u1a14 \u1a15\u1a18\u1a01\u1a17",
+    "lang_engl": "Buginese"
+  },
+  "cdo": {
+    "lang": "\u95a9\u6771\u8a9e / M\u00ecng-d\u0115\u0324ng-ng\u1e73\u0304",
+    "lang_engl": "Eastern Min"
+  },
+  "yi": {
+    "lang": "\u05d9\u05d9\u05b4\u05d3\u05d9\u05e9",
+    "lang_engl": "Yiddish"
+  },
+  "ilo": {
+    "lang": "Ilokano",
+    "lang_engl": "Ilocano"
+  },
+  "sd": {
+    "lang": "\u0633\u0646\u068c\u064a",
+    "lang_engl": "Sindhi"
+  },
+  "am": {
+    "lang": "\u12a0\u121b\u122d\u129b",
+    "lang_engl": "Amharic"
+  },
+  "nap": {
+    "lang": "Napulitano",
+    "lang_engl": "Neapolitan"
+  },
+  "li": {
+    "lang": "Limburgs",
+    "lang_engl": "Limburgish"
+  },
+  "fo": {
+    "lang": "f\u00f8royskt",
+    "lang_engl": "Faroese"
+  },
+  "hsb": {
+    "lang": "hornjoserbsce",
+    "lang_engl": "Upper Sorbian"
+  },
+  "gor": {
+    "lang": "Bahasa Hulontalo",
+    "lang_engl": "Gorontalo"
+  },
+  "map-bms": {
+    "lang": "Basa Banyumasan",
+    "lang_engl": "Banyumasan"
+  },
+  "mai": {
+    "lang": "\u092e\u0948\u0925\u093f\u0932\u0940",
+    "lang_engl": "Maithili"
+  },
+  "mzn": {
+    "lang": "\u0645\u0627\u0632\u0650\u0631\u0648\u0646\u06cc",
+    "lang_engl": "Mazanderani"
+  },
+  "ig": {
+    "lang": "Igbo",
+    "lang_engl": "Igbo"
+  },
+  "bcl": {
+    "lang": "Bikol Central",
+    "lang_engl": "Central Bikol"
+  },
+  "eml": {
+    "lang": "emili\u00e0n e rumagn\u00f2l",
+    "lang_engl": "Emilian-Romagnol"
+  },
+  "ace": {
+    "lang": "Ac\u00e8h",
+    "lang_engl": "Acehnese"
+  },
+  "shn": {
+    "lang": "\u107d\u1083\u1087\u101e\u1083\u1087\u1010\u1086\u1038",
+    "lang_engl": "Shan"
+  },
+  "zh-classical": {
+    "lang": "\u6587\u8a00",
+    "lang_engl": "Classical Chinese"
+  },
+  "sa": {
+    "lang": "\u0938\u0902\u0938\u094d\u0915\u0943\u0924\u092e\u094d",
+    "lang_engl": "Sanskrit"
+  },
+  "wa": {
+    "lang": "walon",
+    "lang_engl": "Walloon"
+  },
+  "ie": {
+    "lang": "Interlingue",
+    "lang_engl": "Interlingue"
+  },
+  "lij": {
+    "lang": "Ligure",
+    "lang_engl": "Ligurian"
+  },
+  "as": {
+    "lang": "\u0985\u09b8\u09ae\u09c0\u09af\u09bc\u09be",
+    "lang_engl": "Assamese"
+  },
+  "zu": {
+    "lang": "isiZulu",
+    "lang_engl": "Zulu"
+  },
+  "mhr": {
+    "lang": "\u043e\u043b\u044b\u043a \u043c\u0430\u0440\u0438\u0439",
+    "lang_engl": "Meadow Mari"
+  },
+  "mrj": {
+    "lang": "\u043a\u044b\u0440\u044b\u043a \u043c\u0430\u0440\u044b",
+    "lang_engl": "Hill Mari"
+  },
+  "hyw": {
+    "lang": "\u0531\u0580\u0565\u0582\u0574\u057f\u0561\u0570\u0561\u0575\u0565\u0580\u0567\u0576",
+    "lang_engl": "Western Armenian"
+  },
+  "hif": {
+    "lang": "Fiji Hindi",
+    "lang_engl": "Fiji Hindi"
+  },
+  "bjn": {
+    "lang": "Banjar",
+    "lang_engl": "Banjarese"
+  },
+  "mni": {
+    "lang": "\uabc3\uabe4\uabc7\uabe9 \uabc2\uabe3\uabdf",
+    "lang_engl": "Meitei"
+  },
+  "sn": {
+    "lang": "chiShona",
+    "lang_engl": "Shona"
+  },
+  "hak": {
+    "lang": "\u5ba2\u5bb6\u8a9e/Hak-k\u00e2-ng\u00ee",
+    "lang_engl": "Hakka Chinese"
+  },
+  "km": {
+    "lang": "\u1797\u17b6\u179f\u17b6\u1781\u17d2\u1798\u17c2\u179a",
+    "lang_engl": "Khmer"
+  },
+  "roa-tara": {
+    "lang": "tarand\u00edne",
+    "lang_engl": "Tarantino"
+  },
+  "so": {
+    "lang": "Soomaaliga",
+    "lang_engl": "Somali"
+  },
+  "pam": {
+    "lang": "Kapampangan",
+    "lang_engl": "Kapampangan"
+  },
+  "nso": {
+    "lang": "Sesotho sa Leboa",
+    "lang_engl": "Northern Sotho"
+  },
+  "rue": {
+    "lang": "\u0440\u0443\u0441\u0438\u043d\u044c\u0441\u043a\u044b\u0439",
+    "lang_engl": "Rusyn"
+  },
+  "bh": {
+    "lang": "\u092d\u094b\u091c\u092a\u0941\u0930\u0940",
+    "lang_engl": "Bihari (Bhojpuri)"
+  },
+  "tum": {
+    "lang": "chiTumbuka",
+    "lang_engl": "Tumbuka"
+  },
+  "se": {
+    "lang": "davvis\u00e1megiella",
+    "lang_engl": "Northern S\u00e1mi"
+  },
+  "mi": {
+    "lang": "M\u0101ori",
+    "lang_engl": "M\u0101ori"
+  },
+  "myv": {
+    "lang": "\u044d\u0440\u0437\u044f\u043d\u044c",
+    "lang_engl": "Erzya"
+  },
+  "vls": {
+    "lang": "West-Vlams",
+    "lang_engl": "West Flemish"
+  },
+  "sat": {
+    "lang": "\u1c65\u1c5f\u1c71\u1c5b\u1c5f\u1c72\u1c64",
+    "lang_engl": "Santali"
+  },
+  "nds-nl": {
+    "lang": "Nedersaksies",
+    "lang_engl": "Dutch Low Saxon"
+  },
+  "nah": {
+    "lang": "N\u0101huatl",
+    "lang_engl": "Nahuatl"
+  },
+  "sc": {
+    "lang": "sardu",
+    "lang_engl": "Sardinian"
+  },
+  "vep": {
+    "lang": "veps\u00e4n kel\u2019",
+    "lang_engl": "Veps"
+  },
+  "kab": {
+    "lang": "Taqbaylit",
+    "lang_engl": "Kabyle"
+  },
+  "tk": {
+    "lang": "T\u00fcrkmen\u00e7e",
+    "lang_engl": "Turkmen"
+  },
+  "gan": {
+    "lang": "\u8d1b\u8a9e",
+    "lang_engl": "Gan Chinese"
+  },
+  "glk": {
+    "lang": "\u06af\u06cc\u0644\u06a9\u06cc",
+    "lang_engl": "Gilaki"
+  },
+  "co": {
+    "lang": "corsu",
+    "lang_engl": "Corsican"
+  },
+  "fiu-vro": {
+    "lang": "v\u00f5ro",
+    "lang_engl": "V\u00f5ro"
+  },
+  "kw": {
+    "lang": "kernowek",
+    "lang_engl": "Cornish"
+  },
+  "dag": {
+    "lang": "dagbanli",
+    "lang_engl": "Dagbani"
+  },
+  "ary": {
+    "lang": "\u0627\u0644\u062f\u0627\u0631\u062c\u0629",
+    "lang_engl": "Moroccan Arabic"
+  },
+  "bo": {
+    "lang": "\u0f56\u0f7c\u0f51\u0f0b\u0f61\u0f72\u0f42",
+    "lang_engl": "Lhasa Tibetan"
+  },
+  "ab": {
+    "lang": "\u0430\u0525\u0441\u0448\u04d9\u0430",
+    "lang_engl": "Abkhaz"
+  },
+  "gv": {
+    "lang": "Gaelg",
+    "lang_engl": "Manx"
+  },
+  "frp": {
+    "lang": "arpetan",
+    "lang_engl": "Franco-Proven\u00e7al"
+  },
+  "zea": {
+    "lang": "Ze\u00eauws",
+    "lang_engl": "Zeelandic"
+  },
+  "skr": {
+    "lang": "\u0633\u0631\u0627\u0626\u06cc\u06a9\u06cc",
+    "lang_engl": "Saraiki"
+  },
+  "ug": {
+    "lang": "\u0626\u06c7\u064a\u063a\u06c7\u0631\u0686\u06d5 / Uyghurche",
+    "lang_engl": "Uyghur"
+  },
+  "kv": {
+    "lang": "\u043a\u043e\u043c\u0438",
+    "lang_engl": "Komi"
+  },
+  "pcd": {
+    "lang": "Picard",
+    "lang_engl": "Picard"
+  },
+  "udm": {
+    "lang": "\u0443\u0434\u043c\u0443\u0440\u0442",
+    "lang_engl": "Udmurt"
+  },
+  "csb": {
+    "lang": "kasz\u00ebbsczi",
+    "lang_engl": "Kashubian"
+  },
+  "mt": {
+    "lang": "Malti",
+    "lang_engl": "Maltese"
+  },
+  "ay": {
+    "lang": "Aymar aru",
+    "lang_engl": "Aymara"
+  },
+  "gn": {
+    "lang": "Ava\u00f1e'\u1ebd",
+    "lang_engl": "Guarani"
+  },
+  "smn": {
+    "lang": "anar\u00e2\u0161kiel\u00e2",
+    "lang_engl": "Inari S\u00e1mi"
+  },
+  "nrm": {
+    "lang": "Nouormand",
+    "lang_engl": "Norman"
+  },
+  "lez": {
+    "lang": "\u043b\u0435\u0437\u0433\u0438",
+    "lang_engl": "Lezgian"
+  },
+  "lfn": {
+    "lang": "Lingua Franca Nova",
+    "lang_engl": "Lingua Franca Nova"
+  },
+  "stq": {
+    "lang": "Seeltersk",
+    "lang_engl": "Saterland Frisian"
+  },
+  "olo": {
+    "lang": "livvinkarjala",
+    "lang_engl": "Livvi-Karelian"
+  },
+  "lo": {
+    "lang": "\u0ea5\u0eb2\u0ea7",
+    "lang_engl": "Lao"
+  },
+  "rw": {
+    "lang": "Ikinyarwanda",
+    "lang_engl": "Kinyarwanda"
+  },
+  "mwl": {
+    "lang": "Mirand\u00e9s",
+    "lang_engl": "Mirandese"
+  },
+  "ang": {
+    "lang": "\u00c6nglisc",
+    "lang_engl": "Old English"
+  },
+  "fur": {
+    "lang": "furlan",
+    "lang_engl": "Friulian"
+  },
+  "rm": {
+    "lang": "rumantsch",
+    "lang_engl": "Romansh"
+  },
+  "lad": {
+    "lang": "Ladino",
+    "lang_engl": "Judaeo-Spanish"
+  },
+  "gom": {
+    "lang": "\u0917\u094b\u0902\u092f\u091a\u0940 \u0915\u094b\u0902\u0915\u0923\u0940 / G\u00f5ychi Konknni",
+    "lang_engl": "Konkani (Goan Konkani)"
+  },
+  "koi": {
+    "lang": "\u043f\u0435\u0440\u0435\u043c \u043a\u043e\u043c\u0438",
+    "lang_engl": "Permyak"
+  },
+  "ext": {
+    "lang": "estreme\u00f1u",
+    "lang_engl": "Extremaduran"
+  },
+  "tyv": {
+    "lang": "\u0442\u044b\u0432\u0430 \u0434\u044b\u043b",
+    "lang_engl": "Tuvan"
+  },
+  "dsb": {
+    "lang": "dolnoserbski",
+    "lang_engl": "Lower Sorbian"
+  },
+  "av": {
+    "lang": "\u0430\u0432\u0430\u0440",
+    "lang_engl": "Avar"
+  },
+  "dty": {
+    "lang": "\u0921\u094b\u091f\u0947\u0932\u0940",
+    "lang_engl": "Doteli"
+  },
+  "ln": {
+    "lang": "ling\u00e1la",
+    "lang_engl": "Lingala"
+  },
+  "cbk-zam": {
+    "lang": "Chavacano de Zamboanga",
+    "lang_engl": "Chavacano (Zamboanga)"
+  },
+  "pap": {
+    "lang": "Papiamentu",
+    "lang_engl": "Papiamento"
+  },
+  "dv": {
+    "lang": "\u078b\u07a8\u0788\u07ac\u0780\u07a8\u0784\u07a6\u0790\u07b0",
+    "lang_engl": "Maldivian"
+  },
+  "kaa": {
+    "lang": "Qaraqalpaqsha",
+    "lang_engl": "Karakalpak"
+  },
+  "ksh": {
+    "lang": "Ripoarisch",
+    "lang_engl": "Ripuarian"
+  },
+  "gag": {
+    "lang": "Gagauz",
+    "lang_engl": "Gagauz"
+  },
+  "bxr": {
+    "lang": "\u0431\u0443\u0440\u044f\u0430\u0434",
+    "lang_engl": "Buryat (Russia Buriat)"
+  },
+  "pfl": {
+    "lang": "P\u00e4lzisch",
+    "lang_engl": "Palatine German"
+  },
+  "pag": {
+    "lang": "Pangasinan",
+    "lang_engl": "Pangasinan"
+  },
+  "pi": {
+    "lang": "\u092a\u093e\u0932\u093f",
+    "lang_engl": "Pali"
+  },
+  "ks": {
+    "lang": "\u0915\u0949\u0936\u0941\u0930 / \u06a9\u0672\u0634\u064f\u0631",
+    "lang_engl": "Kashmiri"
+  },
+  "szy": {
+    "lang": "Sakizaya",
+    "lang_engl": "Sakizaya"
+  },
+  "haw": {
+    "lang": "Hawai\u02bbi",
+    "lang_engl": "Hawaiian"
+  },
+  "awa": {
+    "lang": "\u0905\u0935\u0927\u0940",
+    "lang_engl": "Awadhi"
+  },
+  "tay": {
+    "lang": "Tayal",
+    "lang_engl": "Atayal"
+  },
+  "za": {
+    "lang": "Vahcuengh",
+    "lang_engl": "Zhuang (Standard Zhuang)"
+  },
+  "mdf": {
+    "lang": "\u043c\u043e\u043a\u0448\u0435\u043d\u044c",
+    "lang_engl": "Moksha"
+  },
+  "tw": {
+    "lang": "Twi",
+    "lang_engl": "Twi"
+  },
+  "blk": {
+    "lang": "\u1015\u1021\u102d\u102f\u101d\u103a\u108f\u1018\u102c\u108f\u101e\u102c\u108f",
+    "lang_engl": "Pa'O"
+  },
+  "inh": {
+    "lang": "\u0433\u04c0\u0430\u043b\u0433\u04c0\u0430\u0439",
+    "lang_engl": "Ingush"
+  },
+  "krc": {
+    "lang": "\u043a\u044a\u0430\u0440\u0430\u0447\u0430\u0439-\u043c\u0430\u043b\u043a\u044a\u0430\u0440",
+    "lang_engl": "Karachay-Balkar"
+  },
+  "xal": {
+    "lang": "\u0445\u0430\u043b\u044c\u043c\u0433",
+    "lang_engl": "Kalmyk Oirat"
+  },
+  "pdc": {
+    "lang": "Deitsch",
+    "lang_engl": "Pennsylvania Dutch"
+  },
+  "atj": {
+    "lang": "Atikamekw",
+    "lang_engl": "Atikamekw"
+  },
+  "to": {
+    "lang": "lea faka-Tonga",
+    "lang_engl": "Tongan"
+  },
+  "arc": {
+    "lang": "\u0710\u072a\u0721\u071d\u0710",
+    "lang_engl": "Aramaic (Syriac)"
+  },
+  "tcy": {
+    "lang": "\u0ca4\u0cc1\u0cb3\u0cc1",
+    "lang_engl": "Tulu"
+  },
+  "lg": {
+    "lang": "Luganda",
+    "lang_engl": "Luganda"
+  },
+  "mnw": {
+    "lang": "\u1018\u102c\u101e\u102c \u1019\u1014\u103a",
+    "lang_engl": "Mon"
+  },
+  "kbp": {
+    "lang": "Kab\u0269y\u025b",
+    "lang_engl": "Kabiye"
+  },
+  "jam": {
+    "lang": "Patois",
+    "lang_engl": "Jamaican Patois"
+  },
+  "na": {
+    "lang": "Dorerin Naoero",
+    "lang_engl": "Nauruan"
+  },
+  "wo": {
+    "lang": "Wolof",
+    "lang_engl": "Wolof"
+  },
+  "kbd": {
+    "lang": "\u0430\u0434\u044b\u0433\u044d\u0431\u0437\u044d",
+    "lang_engl": "Kabardian"
+  },
+  "nia": {
+    "lang": "Li Niha",
+    "lang_engl": "Nias"
+  },
+  "nov": {
+    "lang": "Novial",
+    "lang_engl": "Novial"
+  },
+  "ki": {
+    "lang": "G\u0129k\u0169y\u0169",
+    "lang_engl": "Kikuyu"
+  },
+  "bi": {
+    "lang": "Bislama",
+    "lang_engl": "Bislama"
+  },
+  "nqo": {
+    "lang": "\u07d2\u07de\u07cf",
+    "lang_engl": "N'Ko"
+  },
+  "tpi": {
+    "lang": "Tok Pisin",
+    "lang_engl": "Tok Pisin"
+  },
+  "tet": {
+    "lang": "tetun",
+    "lang_engl": "Tetum"
+  },
+  "shi": {
+    "lang": "Tacl\u1e25it",
+    "lang_engl": "Shilha"
+  },
+  "jbo": {
+    "lang": "la .lojban.",
+    "lang_engl": "Lojban"
+  },
+  "roa-rup": {
+    "lang": "arm\u00e3neashti",
+    "lang_engl": "Aromanian"
+  },
+  "fj": {
+    "lang": "Na Vosa Vakaviti",
+    "lang_engl": "Fijian"
+  },
+  "lbe": {
+    "lang": "\u043b\u0430\u043a\u043a\u0443",
+    "lang_engl": "Lak"
+  },
+  "kg": {
+    "lang": "Kongo",
+    "lang_engl": "Kongo (Kituba)"
+  },
+  "xh": {
+    "lang": "isiXhosa",
+    "lang_engl": "Xhosa"
+  },
+  "ty": {
+    "lang": "reo tahiti",
+    "lang_engl": "Tahitian"
+  },
+  "cu": {
+    "lang": "\u0441\u043b\u043e\u0432\u0463\u043d\u044c\u0441\u043a\u044a / \u2c14\u2c0e\u2c11\u2c02\u2c21\u2c10\u2c20\u2c14\u2c0d\u2c1f",
+    "lang_engl": "Old Church Slavonic"
+  },
+  "guw": {
+    "lang": "gungbe",
+    "lang_engl": "Gun"
+  },
+  "om": {
+    "lang": "Oromoo",
+    "lang_engl": "Oromo"
+  },
+  "trv": {
+    "lang": "Seediq",
+    "lang_engl": "Seediq"
+  },
+  "srn": {
+    "lang": "Sranantongo",
+    "lang_engl": "Sranan Tongo"
+  },
+  "sm": {
+    "lang": "Gagana Samoa",
+    "lang_engl": "Samoan"
+  },
+  "gcr": {
+    "lang": "kriy\u00f2l gwiyannen",
+    "lang_engl": "French Guianese Creole"
+  },
+  "alt": {
+    "lang": "\u0430\u043b\u0442\u0430\u0439 \u0442\u0438\u043b",
+    "lang_engl": "Southern Altai"
+  },
+  "chr": {
+    "lang": "\u13e3\u13b3\u13a9",
+    "lang_engl": "Cherokee"
+  },
+  "ltg": {
+    "lang": "latga\u013cu",
+    "lang_engl": "Latgalian"
+  },
+  "tn": {
+    "lang": "Setswana",
+    "lang_engl": "Tswana"
+  },
+  "ny": {
+    "lang": "Chi-Chewa",
+    "lang_engl": "Chewa"
+  },
+  "st": {
+    "lang": "Sesotho",
+    "lang_engl": "Sotho"
+  },
+  "pih": {
+    "lang": "Norfuk / Pitkern",
+    "lang_engl": "Norfuk"
+  },
+  "mad": {
+    "lang": "Madhur\u00e2",
+    "lang_engl": "Madurese"
+  },
+  "got": {
+    "lang": "\ud800\udf32\ud800\udf3f\ud800\udf44\ud800\udf39\ud800\udf43\ud800\udf3a",
+    "lang_engl": "Gothic"
+  },
+  "ami": {
+    "lang": "Pangcah",
+    "lang_engl": "Amis"
+  },
+  "rmy": {
+    "lang": "romani \u010dhib",
+    "lang_engl": "Romani (Vlax Romani)"
+  },
+  "bm": {
+    "lang": "bamanankan",
+    "lang_engl": "Bambara"
+  },
+  "ve": {
+    "lang": "Tshivenda",
+    "lang_engl": "Venda"
+  },
+  "ts": {
+    "lang": "Xitsonga",
+    "lang_engl": "Tsonga"
+  },
+  "ff": {
+    "lang": "Fulfulde",
+    "lang_engl": "Fula"
+  },
+  "chy": {
+    "lang": "Tsets\u00eahest\u00e2hese",
+    "lang_engl": "Cheyenne"
+  },
+  "ss": {
+    "lang": "SiSwati",
+    "lang_engl": "Swazi"
+  },
+  "rn": {
+    "lang": "ikirundi",
+    "lang_engl": "Kirundi"
+  },
+  "ak": {
+    "lang": "Akan",
+    "lang_engl": "Akan"
+  },
+  "kcg": {
+    "lang": "Tyap",
+    "lang_engl": "Tyap"
+  },
+  "iu": {
+    "lang": "\u1403\u14c4\u1483\u144e\u1450\u1466/inuktitut",
+    "lang_engl": "Inuktitut"
+  },
+  "ch": {
+    "lang": "Chamoru",
+    "lang_engl": "Chamorro"
+  },
+  "ee": {
+    "lang": "e\u028begbe",
+    "lang_engl": "Ewe"
+  },
+  "pnt": {
+    "lang": "\u03a0\u03bf\u03bd\u03c4\u03b9\u03b1\u03ba\u03ac",
+    "lang_engl": "Pontic Greek"
+  },
+  "ady": {
+    "lang": "\u0430\u0434\u044b\u0433\u0430\u0431\u0437\u044d",
+    "lang_engl": "Adyghe"
+  },
+  "ik": {
+    "lang": "I\u00f1upiatun",
+    "lang_engl": "I\u00f1upiaq"
+  },
+  "pcm": {
+    "lang": "Naij\u00e1",
+    "lang_engl": "Nigerian Pidgin"
+  },
+  "sg": {
+    "lang": "S\u00e4ng\u00f6",
+    "lang_engl": "Sango"
+  },
+  "pwn": {
+    "lang": "pinayuanan",
+    "lang_engl": "Paiwan"
+  },
+  "din": {
+    "lang": "Thu\u0254\u014bj\u00e4\u014b",
+    "lang_engl": "Dinka"
+  },
+  "ti": {
+    "lang": "\u1275\u130d\u122d\u129b",
+    "lang_engl": "Tigrinya"
+  },
+  "kl": {
+    "lang": "kalaallisut",
+    "lang_engl": "Greenlandic"
+  },
+  "dz": {
+    "lang": "\u0f47\u0f7c\u0f44\u0f0b\u0f41",
+    "lang_engl": "Dzongkha"
+  },
+  "cr": {
+    "lang": "N\u0113hiyaw\u0113win / \u14c0\u1426\u1403\u152d\u140d\u140f\u1423",
+    "lang_engl": "Cree"
+  },
+  "ng": {
+    "lang": "Oshiwambo",
+    "lang_engl": "Ndonga (closed)"
+  },
+  "cho": {
+    "lang": "Chahta Anumpa",
+    "lang_engl": "Choctaw (closed)"
+  },
+  "kj": {
+    "lang": "Kwanyama",
+    "lang_engl": "Kwanyama (closed)"
+  },
+  "mh": {
+    "lang": "Ebon",
+    "lang_engl": "Marshallese (closed)"
+  },
+  "ho": {
+    "lang": "Hiri Motu",
+    "lang_engl": "Hiri Motu (closed)"
+  },
+  "ii": {
+    "lang": "\ua187\ua259",
+    "lang_engl": "Nuosu (closed)"
+  },
+  "lrc": {
+    "lang": "\u0644\u06ca\u0631\u06cc \u0634\u0648\u0645\u0627\u0644\u06cc",
+    "lang_engl": "Northern Luri (closed)"
+  },
+  "mus": {
+    "lang": "Mvskoke",
+    "lang_engl": "Muscogee (closed)"
+  },
+  "aa": {
+    "lang": "Qaf\u00e1r af",
+    "lang_engl": "Afar (closed)"
+  },
+  "hz": {
+    "lang": "Otsiherero",
+    "lang_engl": "Herero (closed)"
+  },
+  "kr": {
+    "lang": "kanuri",
+    "lang_engl": "Kanuri (closed)"
+  }
+}
