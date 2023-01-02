@@ -151,7 +151,7 @@ async function populateTable(infoDictArr) {
     rowDiv.id = lang + "." + title;
     rowDiv.className = "row-field";
     rowDiv.appendChild(createGraph(size, maxSize));
-    rowDiv.appendChild(createLang(wikiLangs[lang].lang_engl));
+    rowDiv.appendChild(createLang(wikiLangs[lang].lang));
     rowDiv.addEventListener("click", onClickAction.bind(null, lang, title));
 
     rows.appendChild(rowDiv);
