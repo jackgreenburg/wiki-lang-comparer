@@ -1,0 +1,32 @@
+{
+  "batchcomplete": "",
+  "query": {
+    "normalized": [
+      {
+        "from": "Okhla_Assembly_constituency",
+        "to": "Okhla Assembly constituency"
+      }
+    ],
+    "pages": {
+      "41499839": {
+        "pageid": 41499839,
+        "ns": 0,
+        "title": "Okhla Assembly constituency",
+        "langlinks": [
+          {
+            "lang": "hi",
+            "*": "\u0913\u0916\u0932\u093e \u0935\u093f\u0927\u093e\u0928\u0938\u092d\u093e \u0928\u093f\u0930\u094d\u0935\u093e\u091a\u0928 \u0915\u094d\u0937\u0947\u0924\u094d\u0930, \u0926\u093f\u0932\u094d\u0932\u0940"
+          },
+          {
+            "lang": "mr",
+            "*": "\u0913\u0916\u0932\u093e \u0935\u093f\u0927\u093e\u0928\u0938\u092d\u093e \u092e\u0924\u0926\u093e\u0930\u0938\u0902\u0918, \u0926\u093f\u0932\u094d\u0932\u0940"
+          },
+          {
+            "lang": "ta",
+            "*": "\u0b93\u0b95\u0bcd\u0bb2\u0bbe \u0b9a\u0b9f\u0bcd\u0b9f\u0bae\u0ba9\u0bcd\u0bb1\u0ba4\u0bcd \u0ba4\u0bca\u0b95\u0bc1\u0ba4\u0bbf"
+          }
+        ]
+      }
+    }
+  }
+}

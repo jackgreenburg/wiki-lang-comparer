@@ -37,6 +37,10 @@ div.row-graph {
   flex: 2;
 }
 
+div.row-graph:hover {
+  opacity: 0.5;
+}
+
 div.bar {
   flex: 1;
   height: 100%;
