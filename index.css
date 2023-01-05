@@ -1,9 +1,9 @@
 :root {
   --main-bg: #f9f9f9;
   --highlight-color: #fff;
-  --border-color: #000;
+  --border-color: #a7d7f9;
   --bar-color: #000;
-  --header-bg: lavender;
+  --header-bg: #efefef;
 }
 
 button {
@@ -12,7 +12,7 @@ button {
   outline: none;
   margin: 10px;
   border: none;
-  border-radius: 2px;
+  border-radius: 1px;
   justify-content: center;
 }
 
