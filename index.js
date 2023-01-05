@@ -108,7 +108,7 @@ async function getCurrentTab() {
   // split removes extra page location information in url
   const found = tab.url.split("#", 1)[0].match(regex);
 
-  if (!found) return ["not a proper wikipedia page...", "die"];
+  if (!found) return [false, false];
   return [found[1], found[2]];
 }
 
@@ -138,20 +138,30 @@ function createGraph(size, max) {
 }
 
 async function populateTable(infoDictArr) {
-  const data = await fetch("wiki_langs.json");
-  const wikiLangs = await data.json();
+  const langsData = await fetch("wiki_langs.json");
+  const wikiLangs = await langsData.json();
+
+  const redirectsData = await fetch("wiki_redirects.json");
+  const wikiRedirects = await redirectsData.json();
 
   const rows = document.getElementById("rows");
   rows.innerHTML = "";
 
   const { size: maxSize } = infoDictArr[0];
   for (const [index, infoDict] of infoDictArr.entries()) {
-    const { lang, title, size } = infoDict;
+    const { lang: langCode, title, size } = infoDict;
     var rowDiv = document.createElement("div");
-    rowDiv.id = lang + "." + title;
+    rowDiv.id = langCode + "." + title;
     rowDiv.className = "row-field";
     rowDiv.appendChild(createGraph(size, maxSize));
-    rowDiv.appendChild(createLang(wikiLangs[lang].lang_engl));
+
+    /** handle redirects*/
+    var lang = null;
+    if (langCode in wikiLangs) lang = wikiLangs[langCode].lang;
+    else if (wikiRedirects[langCode] in wikiLangs)
+      lang = wikiLangs[wikiRedirects[langCode]].lang;
+
+    rowDiv.appendChild(createLang(lang));
     rowDiv.addEventListener("click", onClickAction.bind(null, lang, title));
 
     rows.appendChild(rowDiv);
@@ -160,19 +170,26 @@ async function populateTable(infoDictArr) {
 
 async function execute() {
   const [lang, title] = await getCurrentTab();
+  if (!lang) {
+    document.getElementById("basic").innerHTML =
+      "not a proper wikipedia page... die";
+    return false;
+  }
   document.getElementById("basic").innerHTML =
-    "current:\n" + lang + " " + title;
+    "searching for other languanges of article: " + title;
 
   const lang_title_list = await fetchLanguages(lang, title);
   lang_title_list.push([lang, title]); // add active article
   const sizes = await processSizeFetching(lang_title_list);
   console.log(sizes);
   // console.log(sizes);
+
   populateTable(sizes);
   // document.getElementById("basic").innerHTML = sizes
   //   .map((size) => size.lang + "/" + size.title + ": " + size.size)
   //   .join("\n");
 
+  document.getElementById("basic").innerHTML = "";
   return true;
 }
 
