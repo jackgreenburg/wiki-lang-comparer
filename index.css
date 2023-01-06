@@ -1,5 +1,5 @@
 :root {
-  --main-bg: #f9f9f9;
+  --main-bg: #f8f9fa;
   --highlight-color: #fff;
   --border-color: #a7d7f9;
   --bar-color: #000;
@@ -17,7 +17,8 @@ button {
 }
 
 h1 {
-  background: var(--header-bg);
+  /* background: var(--header-bg); */
+  margin-bottom: 0.3em;
 }
 
 div.center {
@@ -27,12 +28,18 @@ div.center {
 }
 
 body.main {
-  height: 150px;
-  width: 250px;
+  width: 25em;
   justify-content: end;
-  background: var(--main-bg);
+  background: white;
 }
-
+div.box {
+  border: 1px solid #a2a9b1;
+  padding: 0.3em;
+  background: var(--main-bg);
+  min-height: 15em;
+  max-height: 40em;
+  overflow-y: auto;
+}
 div.row-container {
   display: flex;
   flex-direction: column;
