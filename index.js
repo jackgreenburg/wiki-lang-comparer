@@ -86,7 +86,7 @@ async function fetchLanguages(lang_code, title) {
   const page_info = pages[pageID];
 
   console.log("fetched alt langs for: " + page_info.title);
-
+  if (!page_info.langlinks) return [];
   return page_info.langlinks.map((x) => [x.lang, x["*"]]);
 }
 
