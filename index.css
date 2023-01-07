@@ -17,7 +17,6 @@ button {
 }
 
 h1 {
-  /* background: var(--header-bg); */
   margin-bottom: 0.3em;
 }
 
@@ -32,6 +31,7 @@ body.main {
   justify-content: end;
   background: white;
 }
+
 div.box {
   border: 1px solid #a2a9b1;
   padding: 0.3em;
@@ -40,6 +40,7 @@ div.box {
   max-height: 40em;
   overflow-y: auto;
 }
+
 div.row-container {
   display: flex;
   flex-direction: column;
@@ -61,13 +62,25 @@ div.row-field:hover {
   border-color: var(--border-color);
 }
 
+div.row-field:hover > div.row-graph {
+  flex: 0;
+  opacity: 0.5;
+}
+
 div.row-graph {
   flex: 2;
+  margin-top: 0.6em;
+  transition: 0.25s;
 }
 
 div.row-graph:hover {
   opacity: 0.5;
 }
+
+/* div.row-graph:hover {
+  flex: 0;
+  opacity: 0.5;
+} */
 
 div.bar {
   flex: 1;
@@ -75,7 +88,14 @@ div.bar {
   background: var(--bar-color);
   margin-left: auto;
   margin-right: 0;
+  height: 1.3em;
+  transition: 0.1s;
 }
+
+/* div.bar:hover {
+  width: 1000px;
+  opacity: 0.5;
+} */
 
 div.row-lang {
   flex: 3;

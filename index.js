@@ -22,8 +22,8 @@ function constructURL(lang_code, title) {
 async function fetchSize(lang_code, title) {
   const url = constructURL(lang_code, title);
 
-  const response = await fetch(url);
-  // const response = await fetch("fetch2_response.json");
+  // const response = await fetch(url);
+  const response = await fetch("fetch2_response.json");
   const data = await response.json();
 
   const pages = data.query.pages;
@@ -76,8 +76,8 @@ async function fetchLanguages(lang_code, title) {
 
   console.log("prepped first url:\n-->" + url);
 
-  const response = await fetch(url);
-  // const response = await fetch("fetch1_response.json");
+  // const response = await fetch(url);
+  const response = await fetch("fetch1_response.json");
 
   const data = await response.json();
 
@@ -126,6 +126,13 @@ function createLang(title) {
   return div;
 }
 
+function createDoubleLang(lang, lang_engl) {
+  var div = document.createElement("div");
+  div.className = "row-lang";
+  div.innerHTML = "<b>" + lang + "</b><br>" + lang_engl;
+  return div;
+}
+
 function createGraph(size, max) {
   var div = document.createElement("div");
   div.className = "row-graph";
@@ -153,16 +160,17 @@ async function populateTable(infoDictArr) {
     var rowDiv = document.createElement("div");
     rowDiv.id = langCode + "." + title;
     rowDiv.className = "row-field";
-    rowDiv.appendChild(createGraph(size, maxSize));
 
     /** handle redirects*/
-    var lang = null;
-    if (langCode in wikiLangs) lang = wikiLangs[langCode].lang;
+    var langDict = null;
+    if (langCode in wikiLangs) langDict = wikiLangs[langCode];
     else if (wikiRedirects[langCode] in wikiLangs)
-      lang = wikiLangs[wikiRedirects[langCode]].lang;
-
-    rowDiv.appendChild(createLang(lang));
-    rowDiv.addEventListener("click", onClickAction.bind(null, lang, title));
+      langDict = wikiLangs[wikiRedirects[langCode]];
+    else continue;
+    console.log(langDict.lang);
+    rowDiv.appendChild(createDoubleLang(langDict.lang, langDict.lang_engl));
+    rowDiv.appendChild(createGraph(size, maxSize));
+    rowDiv.addEventListener("click", onClickAction.bind(null, langCode, title));
 
     rows.appendChild(rowDiv);
   }
@@ -193,6 +201,7 @@ async function execute() {
   return true;
 }
 
-document.getElementById("trigger").addEventListener("click", function () {
+var button = document.getElementById("trigger");
+button.addEventListener("click", function () {
   execute();
 });
