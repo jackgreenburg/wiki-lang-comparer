@@ -22,8 +22,8 @@ function constructURL(lang_code, title) {
 async function fetchSize(lang_code, title) {
   const url = constructURL(lang_code, title);
 
-  // const response = await fetch(url);
-  const response = await fetch("fetch2_response.json");
+  const response = await fetch(url);
+  // const response = await fetch("fetch2_response.json");
   const data = await response.json();
 
   const pages = data.query.pages;
@@ -76,8 +76,8 @@ async function fetchLanguages(lang_code, title) {
 
   console.log("prepped first url:\n-->" + url);
 
-  // const response = await fetch(url);
-  const response = await fetch("fetch1_response.json");
+  const response = await fetch(url);
+  // const response = await fetch("fetch1_response.json");
 
   const data = await response.json();
 
@@ -126,21 +126,47 @@ function createLang(title) {
   return div;
 }
 
+function createSize(title) {
+  var div = document.createElement("div");
+  div.className = "graph-size";
+  div.innerHTML = title;
+  return div;
+}
+
 function createDoubleLang(lang, lang_engl) {
   var div = document.createElement("div");
   div.className = "row-lang";
-  div.innerHTML = "<b>" + lang + "</b><br>" + lang_engl;
+
+  var nativeDiv = document.createElement("div");
+  nativeDiv.className = "lang-native";
+  nativeDiv.innerHTML = lang;
+  div.appendChild(nativeDiv);
+
+  var englDiv = document.createElement("div");
+  englDiv.className = "lang-engl";
+  englDiv.innerHTML = lang_engl;
+  div.appendChild(englDiv);
+
   return div;
 }
 
 function createGraph(size, max) {
   var div = document.createElement("div");
-  div.className = "row-graph";
+  div.className = "graph";
+
+  var graphDiv = document.createElement("div");
+  graphDiv.className = "bar-container";
 
   var barDiv = document.createElement("div");
   barDiv.className = "bar";
   barDiv.style.width = (size / max) * 100 + "%";
-  div.appendChild(barDiv);
+  graphDiv.appendChild(barDiv);
+  div.appendChild(graphDiv);
+
+  var sizeDiv = document.createElement("div");
+  sizeDiv.className = "graph-size";
+  sizeDiv.innerHTML = size + " bytes";
+  div.append(sizeDiv);
   return div;
 }
 
@@ -159,7 +185,7 @@ async function populateTable(infoDictArr) {
     const { lang: langCode, title, size } = infoDict;
     var rowDiv = document.createElement("div");
     rowDiv.id = langCode + "." + title;
-    rowDiv.className = "row-field";
+    rowDiv.className = "row";
 
     /** handle redirects*/
     var langDict = null;
@@ -170,6 +196,7 @@ async function populateTable(infoDictArr) {
     console.log(langDict.lang);
     rowDiv.appendChild(createDoubleLang(langDict.lang, langDict.lang_engl));
     rowDiv.appendChild(createGraph(size, maxSize));
+
     rowDiv.addEventListener("click", onClickAction.bind(null, langCode, title));
 
     rows.appendChild(rowDiv);
@@ -201,7 +228,6 @@ async function execute() {
   return true;
 }
 
-var button = document.getElementById("trigger");
-button.addEventListener("click", function () {
+document.getElementById("trigger").addEventListener("click", function () {
   execute();
 });
