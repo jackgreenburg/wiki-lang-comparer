@@ -76,7 +76,12 @@ async function fetchLanguages(lang_code, title) {
 
   console.log("prepped first url:\n-->" + url);
 
-  const response = await fetch(url);
+  try {
+    var response = await fetch(url);
+  } catch (TypeError) {
+    return [];
+  }
+
   // const response = await fetch("fetch1_response.json");
 
   const data = await response.json();
@@ -203,31 +208,37 @@ async function populateTable(infoDictArr) {
   }
 }
 
+async function errorScreen(path) {
+  const response = await fetch(path);
+  const html = await response.text();
+  document.getElementById("message").innerHTML = html;
+}
+
 async function execute() {
   const [lang, title] = await getCurrentTab();
   if (!lang) {
-    document.getElementById("basic").innerHTML =
-      "not a proper wikipedia page... die";
+    await errorScreen("error_screens\\not_a_wiki_article.html");
     return false;
   }
-  document.getElementById("basic").innerHTML =
-    "searching for other languanges of article: " + title;
+  // document.getElementById("message").innerHTML =
+  //   "searching for other languanges of article: " + title;
 
   const lang_title_list = await fetchLanguages(lang, title);
+  if (lang_title_list.length === 0) {
+    errorScreen("error_screens\\failed_connection.html");
+    return false;
+  }
+
   lang_title_list.push([lang, title]); // add active article
   const sizes = await processSizeFetching(lang_title_list);
-  console.log(sizes);
-  // console.log(sizes);
 
   populateTable(sizes);
-  // document.getElementById("basic").innerHTML = sizes
+  // document.getElementById("message").innerHTML = sizes
   //   .map((size) => size.lang + "/" + size.title + ": " + size.size)
   //   .join("\n");
 
-  document.getElementById("basic").innerHTML = "";
+  document.getElementById("message").remove();
   return true;
 }
 
-document.getElementById("trigger").addEventListener("click", function () {
-  execute();
-});
+execute();
