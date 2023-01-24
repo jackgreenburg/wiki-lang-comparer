@@ -1,23 +1,13 @@
 :root {
-  --main-bg: #f9f9f9;
+  --main-bg: #f8f9fa;
   --highlight-color: #fff;
   --border-color: #a7d7f9;
   --bar-color: #000;
   --header-bg: #efefef;
 }
 
-button {
-  height: 25px;
-  width: 100px;
-  outline: none;
-  margin: 10px;
-  border: none;
-  border-radius: 1px;
-  justify-content: center;
-}
-
 h1 {
-  background: var(--header-bg);
+  margin-bottom: 0.3em;
 }
 
 div.center {
@@ -27,10 +17,18 @@ div.center {
 }
 
 body.main {
-  height: 150px;
-  width: 250px;
+  width: 25em;
   justify-content: end;
+  background: white;
+}
+
+div.box {
+  border: 1px solid #a2a9b1;
+  padding: 0.3em;
   background: var(--main-bg);
+  min-height: 15em;
+  max-height: 40em;
+  overflow-y: auto;
 }
 
 div.row-container {
@@ -38,10 +36,10 @@ div.row-container {
   flex-direction: column;
 }
 
-div.row-field {
+div.row {
   flex: 1;
   display: flex;
-  padding: 0.5em;
+  padding: 0.25em 0.5em;
   cursor: pointer;
   flex-direction: row;
   border-radius: 5px;
@@ -49,17 +47,30 @@ div.row-field {
   border-style: solid;
 }
 
-div.row-field:hover {
+div.row:hover {
   background: var(--highlight-color);
   border-color: var(--border-color);
 }
 
-div.row-graph {
-  flex: 2;
+div.row:hover div.bar-container {
+  flex: 0;
 }
 
-div.row-graph:hover {
-  opacity: 0.5;
+div.row:hover div.graph-size {
+  width: 100%;
+}
+
+div.graph {
+  flex: 2;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.4em;
+  position: relative;
+}
+
+div.bar-container {
+  flex: 1;
+  transition: 0.25s;
 }
 
 div.bar {
@@ -68,13 +79,42 @@ div.bar {
   background: var(--bar-color);
   margin-left: auto;
   margin-right: 0;
+  height: 1.3em;
+  transition: 0.1s;
 }
 
 div.row-lang {
   flex: 3;
+  min-width: 0;
+}
+
+div.graph-size {
+  position: absolute;
+  width: 0;
+  text-align: right;
+  transition: 0.5s;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 h1 {
   font-size: large;
   text-align: center;
+}
+
+p {
+  margin: 0.5em;
+}
+
+div.lang-native {
+  font-weight: bold;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+div.lang-engl {
+  line-height: 1.1;
+  margin-left: 0.5em;
+  font-size: smaller;
 }
