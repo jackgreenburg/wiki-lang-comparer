@@ -26,7 +26,7 @@ div.box {
   border: 1px solid #a2a9b1;
   padding: 0.3em;
   background: var(--main-bg);
-  min-height: 15em;
+  min-height: 3em;
   max-height: 40em;
   overflow-y: auto;
 }
