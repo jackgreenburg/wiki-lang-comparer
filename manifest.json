@@ -1,6 +1,6 @@
 {
-  "name": "Top Language Finder",
-  "description": "Identify the language of a Wikipedia article that has the most information.",
+  "name": "Language Comparer for Wikipedia",
+  "description": "Compare amount of information across the languages of a Wikipedia article.",
   "version": "0.1",
   "manifest_version": 3,
   "host_permissions": [
@@ -12,5 +12,10 @@
   ],
   "action": {
     "default_popup": "index.html"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   }
 }

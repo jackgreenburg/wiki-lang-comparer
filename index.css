@@ -97,6 +97,43 @@ div.graph-size {
   white-space: nowrap;
 }
 
+@keyframes loading-bar {
+  0% {
+    flex: 0.01;
+  }
+  100% {
+    flex: 1;
+  }
+}
+
+div.loading-bar-container {
+  animation-name: loading-bar;
+  animation-duration: 1.5s;
+  animation-direction: alternate-reverse;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-out;
+}
+
+@keyframes loading-graph {
+  0% {
+    width: 100%;
+  }
+  50% {
+    width: 0;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+div.loading-graph-size {
+  animation-name: loading-graph;
+  animation-duration: 1.5s;
+  animation-direction: alternate-reverse;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in;
+}
+
 h1 {
   font-size: large;
   text-align: center;
