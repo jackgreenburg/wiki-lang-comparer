@@ -74,15 +74,11 @@ async function fetchLanguages(lang_code, title) {
     url += "&" + key + "=" + params[key];
   });
 
-  console.log("prepped first url:\n-->" + url);
-
   try {
     var response = await fetch(url);
   } catch (TypeError) {
     return [];
   }
-
-  // const response = await fetch("fetch1_response.json");
 
   const data = await response.json();
 
@@ -90,7 +86,6 @@ async function fetchLanguages(lang_code, title) {
   const pageID = Object.keys(pages)[0];
   const page_info = pages[pageID];
 
-  console.log("fetched alt langs for: " + page_info.title);
   if (!page_info.langlinks) return [];
   return page_info.langlinks.map((x) => [x.lang, x["*"]]);
 }
@@ -119,8 +114,6 @@ async function getCurrentTab() {
 
 function onClickAction(code, title) {
   const url = "https://" + code + ".wikipedia.org/wiki/" + title;
-  console.log("Opening... " + url);
-
   chrome.tabs.create({ url, active: false });
 }
 
@@ -198,7 +191,7 @@ async function populateTable(infoDictArr) {
     else if (wikiRedirects[langCode] in wikiLangs)
       langDict = wikiLangs[wikiRedirects[langCode]];
     else continue;
-    console.log(langDict.lang);
+
     rowDiv.appendChild(createDoubleLang(langDict.lang, langDict.lang_engl));
     rowDiv.appendChild(createGraph(size, maxSize));
 
@@ -209,6 +202,7 @@ async function populateTable(infoDictArr) {
 }
 
 async function errorScreen(path) {
+  document.getElementById("loading-thing").remove();
   const response = await fetch(path);
   const html = await response.text();
   document.getElementById("message").innerHTML = html;
@@ -220,8 +214,6 @@ async function execute() {
     await errorScreen("error_screens\\not_a_wiki_article.html");
     return false;
   }
-  // document.getElementById("message").innerHTML =
-  //   "searching for other languanges of article: " + title;
 
   const lang_title_list = await fetchLanguages(lang, title);
   if (lang_title_list.length === 0) {
@@ -233,11 +225,10 @@ async function execute() {
   const sizes = await processSizeFetching(lang_title_list);
 
   populateTable(sizes);
-  // document.getElementById("message").innerHTML = sizes
-  //   .map((size) => size.lang + "/" + size.title + ": " + size.size)
-  //   .join("\n");
 
   document.getElementById("message").remove();
+  document.getElementById("loading-thing").remove();
+
   return true;
 }
 

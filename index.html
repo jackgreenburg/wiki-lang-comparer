@@ -3,7 +3,7 @@
   <head>
     <link rel="stylesheet" href="index.css" />
   </head>
-  <h1>Top Lang Finder</h1>
+  <h1>Wiki Language Gauge</h1>
   <body class="main">
     <div class="box">
       <div class="center">
@@ -11,6 +11,20 @@
       </div>
       <div class="row-container" id="rows"></div>
       <p id="message"></p>
+      <div id="loading-thing">
+        <div class="row">
+          <div class="row-lang">
+            <div class="lang-native">Hello!</div>
+            <div class="lang-engl">Give us a moment.</div>
+          </div>
+          <div class="graph">
+            <div class="loading-bar loading-bar-container">
+              <div class="bar" style="width: 100%"></div>
+            </div>
+            <div class="graph-size loading-graph-size">Loading . . . . . .</div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
