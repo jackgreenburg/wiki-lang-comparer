@@ -292,12 +292,15 @@ async function execute() {
 
   const rows = document.getElementById("rows");
   rows.innerHTML = "";
+  const loadingLabel = document.querySelector("#loading-thing .lang-native");
 
   const { found, rateLimited } = await processSizeFetching(
     known,
     (article) => {
       const info = getLangInfo(article.lang);
-      if (info) addRow(rows, article, info.langDict);
+      if (!info) return;
+      addRow(rows, article, info.langDict);
+      loadingLabel.textContent = "Still Loading";
     },
   );
   if (found === 0) {

@@ -159,5 +159,6 @@ div.lang-engl {
 p.rate-limit-note {
   margin: 0.5em;
   font-size: 0.85em;
+  text-align: center;
   color: #54595d;
 }
