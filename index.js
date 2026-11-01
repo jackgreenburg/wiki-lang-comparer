@@ -1,7 +1,9 @@
 // Wikimedia rate-limits bursts of API requests (HTTP 429), so articles with
 // 100+ languages can't fire every size request at once.
 const MAX_CONCURRENT_REQUESTS = 4;
-const MAX_RETRIES = 5;
+const MAX_RETRIES = 3;
+// waiting out longer rate limits would stall the popup for minutes
+const MAX_RETRY_WAIT_SECONDS = 5;
 
 function constructURL(lang_code, params) {
   const url = new URL("https://" + lang_code + ".wikipedia.org/w/api.php");
@@ -12,16 +14,21 @@ function constructURL(lang_code, params) {
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-// fetch json, backing off and retrying when rate limited
+class RateLimitedError extends Error {}
+
+// fetch json, retrying short rate limits and giving up on long ones
 async function fetchJSON(url) {
   for (let attempt = 0; ; attempt++) {
     const response = await fetch(url);
     if (response.ok) return response.json();
-    if (response.status !== 429 || attempt >= MAX_RETRIES)
+    if (response.status !== 429)
       throw new Error("HTTP " + response.status + " for " + url);
 
-    const retryAfter = Number(response.headers.get("Retry-After"));
-    await sleep(retryAfter > 0 ? retryAfter * 1000 : 500 * 2 ** attempt);
+    const retryAfter =
+      Number(response.headers.get("Retry-After")) || 0.5 * 2 ** attempt;
+    if (attempt >= MAX_RETRIES || retryAfter > MAX_RETRY_WAIT_SECONDS)
+      throw new RateLimitedError("Rate limited for " + url);
+    await sleep(retryAfter * 1000);
   }
 }
 
@@ -49,27 +56,45 @@ async function fetchSize(lang_code, title) {
   };
 }
 
-async function processSizeFetching(lang_title_list) {
-  const articles = [];
+/**
+ * Fetches the size of each article, calling onArticle as each one arrives.
+ *
+ * @param {Array[Array[string, string]]} lang_title_list   Langs and titles
+ * @param {function} onArticle    Called with each {lang, size, title}
+ * @return {{found: number, rateLimited: number}}   Counts of results
+ */
+async function processSizeFetching(lang_title_list, onArticle) {
   const queue = [...lang_title_list];
+  let found = 0;
+  let rateLimited = 0;
+  let stopped = false;
 
   // a few workers pull from a shared queue to cap concurrent requests
   async function worker() {
-    while (queue.length > 0) {
+    while (queue.length > 0 && !stopped) {
       const lang_title = queue.shift();
       try {
         const article = await fetchSize(...lang_title);
-        if (article) articles.push(article);
+        if (article) {
+          found++;
+          onArticle(article);
+        }
       } catch (error) {
-        // skip this language rather than failing the whole list
-        console.warn("Could not fetch size for", lang_title, error);
+        if (error instanceof RateLimitedError) {
+          // the rest would be refused too, so stop sending requests
+          stopped = true;
+          rateLimited++;
+        } else {
+          // skip this language rather than failing the whole list
+          console.warn("Could not fetch size for", lang_title, error);
+        }
       }
     }
   }
   await Promise.all(Array.from({ length: MAX_CONCURRENT_REQUESTS }, worker));
 
-  articles.sort((a, b) => (a.size < b.size ? 1 : -1));
-  return articles;
+  rateLimited += queue.length;
+  return { found, rateLimited };
 }
 
 /**
@@ -186,37 +211,55 @@ function createGraph(size, max) {
   return div;
 }
 
-async function populateTable(infoDictArr) {
+async function loadLangInfo() {
   const langsData = await fetch("wiki_langs.json");
   const wikiLangs = await langsData.json();
 
   const redirectsData = await fetch("wiki_redirects.json");
   const wikiRedirects = await redirectsData.json();
 
-  const rows = document.getElementById("rows");
-  rows.innerHTML = "";
+  // wiki_langs.json is ordered from largest wiki to smallest
+  const ranks = Object.keys(wikiLangs);
 
-  const { size: maxSize } = infoDictArr[0];
-  for (const [index, infoDict] of infoDictArr.entries()) {
-    const { lang: langCode, title, size } = infoDict;
-    var rowDiv = document.createElement("div");
-    rowDiv.id = langCode + "." + title;
-    rowDiv.className = "row";
-
-    /** handle redirects*/
-    var langDict = null;
-    if (langCode in wikiLangs) langDict = wikiLangs[langCode];
+  /** handle redirects*/
+  return function getLangInfo(langCode) {
+    var code = null;
+    if (langCode in wikiLangs) code = langCode;
     else if (wikiRedirects[langCode] in wikiLangs)
-      langDict = wikiLangs[wikiRedirects[langCode]];
-    else continue;
+      code = wikiRedirects[langCode];
+    else return null;
 
-    rowDiv.appendChild(createDoubleLang(langDict.lang, langDict.lang_engl));
-    rowDiv.appendChild(createGraph(size, maxSize));
+    return { langDict: wikiLangs[code], rank: ranks.indexOf(code) };
+  };
+}
 
-    rowDiv.addEventListener("click", onClickAction.bind(null, langCode, title));
-
-    rows.appendChild(rowDiv);
+// rescale every bar against the largest article
+function updateBars(rows) {
+  const maxSize = Number(rows.firstChild.dataset.size);
+  for (const rowDiv of rows.children) {
+    const bar = rowDiv.querySelector(".bar");
+    bar.style.width = (Number(rowDiv.dataset.size) / maxSize) * 100 + "%";
   }
+}
+
+// insert a row so the table stays sorted from largest to smallest
+function addRow(rows, infoDict, langDict) {
+  const { lang: langCode, title, size } = infoDict;
+  var rowDiv = document.createElement("div");
+  rowDiv.id = langCode + "." + title;
+  rowDiv.className = "row";
+  rowDiv.dataset.size = size;
+
+  rowDiv.appendChild(createDoubleLang(langDict.lang, langDict.lang_engl));
+  rowDiv.appendChild(createGraph(size, size));
+
+  rowDiv.addEventListener("click", onClickAction.bind(null, langCode, title));
+
+  const smaller = [...rows.children].find(
+    (row) => Number(row.dataset.size) < size,
+  );
+  rows.insertBefore(rowDiv, smaller ?? null);
+  updateBars(rows);
 }
 
 async function errorScreen(path) {
@@ -239,17 +282,41 @@ async function execute() {
     return false;
   }
 
-  lang_title_list.push([lang, title]); // add active article
-  const sizes = await processSizeFetching(lang_title_list);
-  if (sizes.length === 0) {
+  const getLangInfo = await loadLangInfo();
+
+  // skip languages that can't be displayed, and fetch the biggest wikis
+  // first so rate limiting only cuts off small ones
+  const known = lang_title_list.filter(([code]) => getLangInfo(code));
+  known.sort((a, b) => getLangInfo(a[0]).rank - getLangInfo(b[0]).rank);
+  known.unshift([lang, title]); // add active article
+
+  const rows = document.getElementById("rows");
+  rows.innerHTML = "";
+
+  const { found, rateLimited } = await processSizeFetching(
+    known,
+    (article) => {
+      const info = getLangInfo(article.lang);
+      if (info) addRow(rows, article, info.langDict);
+    },
+  );
+  if (found === 0) {
     errorScreen("error_screens\\failed_connection.html");
     return false;
   }
 
-  populateTable(sizes);
-
-  document.getElementById("message").remove();
   document.getElementById("loading-thing").remove();
+  const message = document.getElementById("message");
+  if (rateLimited > 0) {
+    message.className = "rate-limit-note";
+    message.textContent =
+      rateLimited +
+      (rateLimited === 1 ? " language" : " languages") +
+      " couldn't load because Wikipedia is limiting requests. " +
+      "Try again in a minute.";
+  } else {
+    message.remove();
+  }
 
   return true;
 }
