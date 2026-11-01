@@ -1,7 +1,7 @@
 {
   "name": "Language Comparer for Wikipedia",
   "description": "Compare amount of information across the languages of a Wikipedia article.",
-  "version": "0.1",
+  "version": "0.2",
   "manifest_version": 3,
   "host_permissions": [
     "https://*.wikipedia.org/*"

@@ -1,36 +1,47 @@
-// TODO: make this work with size or langlinks
-function constructURL(lang_code, title) {
-  // if prop === revisions... elif prop===langlinks
-  let url = "https://" + lang_code + ".wikipedia.org/w/api.php";
+// Wikimedia rate-limits bursts of API requests (HTTP 429), so articles with
+// 100+ languages can't fire every size request at once.
+const MAX_CONCURRENT_REQUESTS = 4;
+const MAX_RETRIES = 5;
 
-  let params = {
-    action: "query",
-    prop: "revisions",
-    format: "json",
-    rvprop: "timestamp%7Csize",
-    titles: title,
-  };
-
-  url = url + "?";
-  Object.keys(params).forEach(function (key) {
-    url += "&" + key + "=" + params[key];
-  });
-
+function constructURL(lang_code, params) {
+  const url = new URL("https://" + lang_code + ".wikipedia.org/w/api.php");
+  // URLSearchParams encodes titles containing &, +, ?, # etc.
+  url.search = new URLSearchParams(params);
   return url;
 }
 
-async function fetchSize(lang_code, title) {
-  const url = constructURL(lang_code, title);
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-  const response = await fetch(url);
-  // const response = await fetch("fetch2_response.json");
-  const data = await response.json();
+// fetch json, backing off and retrying when rate limited
+async function fetchJSON(url) {
+  for (let attempt = 0; ; attempt++) {
+    const response = await fetch(url);
+    if (response.ok) return response.json();
+    if (response.status !== 429 || attempt >= MAX_RETRIES)
+      throw new Error("HTTP " + response.status + " for " + url);
+
+    const retryAfter = Number(response.headers.get("Retry-After"));
+    await sleep(retryAfter > 0 ? retryAfter * 1000 : 500 * 2 ** attempt);
+  }
+}
+
+async function fetchSize(lang_code, title) {
+  const url = constructURL(lang_code, {
+    action: "query",
+    prop: "revisions",
+    format: "json",
+    rvprop: "timestamp|size",
+    titles: title,
+  });
+
+  const data = await fetchJSON(url);
 
   const pages = data.query.pages;
   const pageID = Object.keys(pages)[0];
   const page_info = pages[pageID];
 
-  // perhaps assert length revisions == 0
+  // missing pages have no revisions
+  if (!page_info.revisions) return null;
   return {
     lang: lang_code,
     size: page_info.revisions[0].size,
@@ -39,9 +50,23 @@ async function fetchSize(lang_code, title) {
 }
 
 async function processSizeFetching(lang_title_list) {
-  const articles = await Promise.all(
-    lang_title_list.map((lang_title) => fetchSize(...lang_title)),
-  );
+  const articles = [];
+  const queue = [...lang_title_list];
+
+  // a few workers pull from a shared queue to cap concurrent requests
+  async function worker() {
+    while (queue.length > 0) {
+      const lang_title = queue.shift();
+      try {
+        const article = await fetchSize(...lang_title);
+        if (article) articles.push(article);
+      } catch (error) {
+        // skip this language rather than failing the whole list
+        console.warn("Could not fetch size for", lang_title, error);
+      }
+    }
+  }
+  await Promise.all(Array.from({ length: MAX_CONCURRENT_REQUESTS }, worker));
 
   articles.sort((a, b) => (a.size < b.size ? 1 : -1));
   return articles;
@@ -57,30 +82,19 @@ async function processSizeFetching(lang_title_list) {
  * @return {Array[Array[string, string]]}   List of langs and titles
  */
 async function fetchLanguages(lang_code, title) {
-  // set url with language
-  let url = "https://" + lang_code + ".wikipedia.org/w/api.php";
-
-  let params = {
+  const url = constructURL(lang_code, {
     action: "query",
     prop: "langlinks",
     format: "json",
     lllimit: "500",
     titles: title,
-  };
-
-  // concatenate onto url
-  url = url + "?";
-  Object.keys(params).forEach(function (key) {
-    url += "&" + key + "=" + params[key];
   });
 
   try {
-    var response = await fetch(url);
-  } catch (TypeError) {
+    var data = await fetchJSON(url);
+  } catch (error) {
     return [];
   }
-
-  const data = await response.json();
 
   const pages = data.query.pages;
   const pageID = Object.keys(pages)[0];
@@ -109,11 +123,15 @@ async function getCurrentTab() {
   const found = tab.url.split("#", 1)[0].match(regex);
 
   if (!found) return [false, false];
-  return [found[1], found[2]];
+  return [found[1], decodeURIComponent(found[2])];
 }
 
 function onClickAction(code, title) {
-  const url = "https://" + code + ".wikipedia.org/wiki/" + title;
+  const url =
+    "https://" +
+    code +
+    ".wikipedia.org/wiki/" +
+    encodeURIComponent(title.replaceAll(" ", "_"));
   chrome.tabs.create({ url, active: false });
 }
 
@@ -223,6 +241,10 @@ async function execute() {
 
   lang_title_list.push([lang, title]); // add active article
   const sizes = await processSizeFetching(lang_title_list);
+  if (sizes.length === 0) {
+    errorScreen("error_screens\\failed_connection.html");
+    return false;
+  }
 
   populateTable(sizes);
 
