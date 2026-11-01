@@ -133,7 +133,7 @@ async function fetchLanguages(lang_code, title) {
  * Returns a list containting the language and the title of the active tab.
  * If the active tab is not a Wikipedia article it does something else..
  *
- * @return {[Array[string, string]]}   List of lang and title
+ * @return {[Array[string, string, number]]}   List of lang, title and tab id
  */
 async function getCurrentTab() {
   let queryOptions = { active: true, lastFocusedWindow: true };
@@ -148,7 +148,7 @@ async function getCurrentTab() {
   const found = tab.url.split("#", 1)[0].match(regex);
 
   if (!found) return [false, false];
-  return [found[1], decodeURIComponent(found[2])];
+  return [found[1], decodeURIComponent(found[2]), tab.id];
 }
 
 function onClickAction(code, title) {
@@ -269,40 +269,71 @@ async function errorScreen(path) {
   document.getElementById("message").innerHTML = html;
 }
 
+// sizes are cached per tab until it closes (see background.js) or expires
+const CACHE_MINUTES = 30;
+
+async function loadCache(tabId, lang, title) {
+  const key = "tab-" + tabId;
+  const { [key]: entry } = await chrome.storage.session.get(key);
+
+  // ignore entries for another article in this tab, or that have expired
+  if (!entry || entry.lang !== lang || entry.title !== title) return null;
+  if (Date.now() - entry.savedAt > CACHE_MINUTES * 60 * 1000) return null;
+  return entry;
+}
+
+function saveCache(tabId, entry) {
+  return chrome.storage.session.set({ ["tab-" + tabId]: entry });
+}
+
 async function execute() {
-  const [lang, title] = await getCurrentTab();
+  const [lang, title, tabId] = await getCurrentTab();
   if (!lang) {
     await errorScreen("error_screens\\not_a_wiki_article.html");
     return false;
   }
 
-  const lang_title_list = await fetchLanguages(lang, title);
-  if (lang_title_list.length === 0) {
-    errorScreen("error_screens\\failed_connection.html");
-    return false;
-  }
-
   const getLangInfo = await loadLangInfo();
 
-  // skip languages that can't be displayed, and fetch the biggest wikis
-  // first so rate limiting only cuts off small ones
-  const known = lang_title_list.filter(([code]) => getLangInfo(code));
-  known.sort((a, b) => getLangInfo(a[0]).rank - getLangInfo(b[0]).rank);
-  known.unshift([lang, title]); // add active article
+  let cache = await loadCache(tabId, lang, title);
+  if (!cache) {
+    const lang_title_list = await fetchLanguages(lang, title);
+    if (lang_title_list.length === 0) {
+      errorScreen("error_screens\\failed_connection.html");
+      return false;
+    }
+
+    // skip languages that can't be displayed, and fetch the biggest wikis
+    // first so rate limiting only cuts off small ones
+    const known = lang_title_list.filter(([code]) => getLangInfo(code));
+    known.sort((a, b) => getLangInfo(a[0]).rank - getLangInfo(b[0]).rank);
+    known.unshift([lang, title]); // add active article
+
+    cache = { lang, title, savedAt: Date.now(), known, articles: [] };
+  }
 
   const rows = document.getElementById("rows");
   rows.innerHTML = "";
   const loadingLabel = document.querySelector("#loading-thing .lang-native");
 
-  const { found, rateLimited } = await processSizeFetching(
-    known,
-    (article) => {
-      const info = getLangInfo(article.lang);
-      if (!info) return;
-      addRow(rows, article, info.langDict);
-      loadingLabel.textContent = "Still Loading";
-    },
-  );
+  function showArticle(article) {
+    const info = getLangInfo(article.lang);
+    if (!info) return;
+    addRow(rows, article, info.langDict);
+    loadingLabel.textContent = "Still Loading";
+  }
+  cache.articles.forEach(showArticle);
+
+  // only fetch what isn't cached, e.g. languages a rate limit cut off
+  const cachedLangs = new Set(cache.articles.map((article) => article.lang));
+  const missing = cache.known.filter(([code]) => !cachedLangs.has(code));
+
+  const { rateLimited } = await processSizeFetching(missing, (article) => {
+    cache.articles.push(article);
+    saveCache(tabId, cache);
+    showArticle(article);
+  });
+  const found = cache.articles.length;
   if (found === 0) {
     errorScreen("error_screens\\failed_connection.html");
     return false;
